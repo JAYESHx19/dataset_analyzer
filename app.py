@@ -51,7 +51,7 @@ init_session_state()
 st.markdown(card_css(), unsafe_allow_html=True)
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
     html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
     .stApp { background: #F8FAFC; }
     section[data-testid="stSidebar"] { background: #1E293B !important; }
@@ -59,25 +59,80 @@ st.markdown("""
     section[data-testid="stSidebar"] .stRadio > div { gap: 4px; }
     section[data-testid="stSidebar"] .stRadio label {
         padding: 8px 14px; border-radius: 8px; cursor: pointer;
-        font-size: 14px; transition: background 0.2s;
+        font-size: 14px; font-weight: 600; transition: background 0.2s;
     }
     section[data-testid="stSidebar"] .stRadio label:hover { background: #334155 !important; }
-    h1, h2, h3 { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Inter', sans-serif; font-weight: 700; }
+    h1 { color: #0F172A; }
+    h2 { color: #1E293B; }
+    h3 { color: #334155; }
+    h4 { color: #475569; }
+    h5, h6 { color: #64748B; }
     .stDataFrame { border-radius: 10px; overflow: hidden; }
     div[data-testid="metric-container"] {
         background: white; border-radius: 12px; padding: 16px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.07); border: 1px solid #F1F5F9;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1); border: 1px solid #E2E8F0;
     }
     .stAlert { border-radius: 10px; }
     .stButton > button {
         border-radius: 8px; font-weight: 600; font-size: 14px;
-        padding: 8px 20px; transition: all 0.2s;
+        padding: 8px 20px; transition: all 0.2s; background: #4F46E5; color: white;
     }
+    .stButton > button:hover { background: #4338CA; }
     .stDownloadButton > button {
         background: #4F46E5 !important; color: white !important;
         border-radius: 8px; font-weight: 600; border: none;
     }
     .block-container { padding-top: 2rem; padding-bottom: 2rem; }
+    .metric-card {
+        background: white; border-radius: 12px; padding: 20px;
+        border: 1px solid #E2E8F0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .section-title {
+        font-size: 16px; font-weight: 700; color: #1E293B; margin-bottom: 12px;
+    }
+    .stMarkdown { color: #374151; }
+    .stSelectbox > div > div > div { color: #374151; }
+    .stSlider > div > div > div { color: #374151; }
+    .stTextInput > div > div > input { color: #374151; }
+    .stTextArea > div > div > textarea { color: #374151; }
+    .stCheckbox > label { color: #374151; font-weight: 500; }
+    .stRadio > label { color: #374151; font-weight: 500; }
+    .stSelectbox > label { color: #374151; font-weight: 600; }
+    .stSlider > label { color: #374151; font-weight: 600; }
+    .stTextInput > label { color: #374151; font-weight: 600; }
+    .stTextArea > label { color: #374151; font-weight: 600; }
+    .stExpander > div > div > span { color: #374151; font-weight: 600; }
+    .stCaption { color: #64748B; font-weight: 500; }
+    .stInfo { background: #EFF6FF; border: 1px solid #BFDBFE; }
+    .stWarning { background: #FFFBEB; border: 1px solid #FDE68A; }
+    .stError { background: #FEF2F2; border: 1px solid #FECACA; }
+    .stSuccess { background: #F0FDF4; border: 1px solid #BBF7D0; }
+    div[data-testid="stExpander"] {
+        background: white; border: 1px solid #E2E8F0; border-radius: 8px;
+    }
+    div[data-testid="stExpander"] > div > div > div {
+        color: #374151; font-weight: 500;
+    }
+    .insight-card {
+        background: white; border: 1px solid #E2E8F0; border-radius: 8px;
+        padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .insight-card h4 {
+        color: #1E293B; margin: 0 0 8px 0; font-size: 14px; font-weight: 600;
+    }
+    .insight-card p {
+        color: #475569; margin: 0; font-size: 13px; line-height: 1.5; font-weight: 500;
+    }
+    .chat-bubble-user {
+        background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 12px;
+        padding: 12px 16px; margin: 8px 0; max-width: 80%; margin-left: auto;
+        color: #1E40AF; font-weight: 500;
+    }
+    .chat-bubble-bot {
+        background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px;
+        padding: 12px 16px; margin: 8px 0; max-width: 80%; color: #374151; font-weight: 500;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -142,10 +197,10 @@ if page == "welcome":
     st.markdown("""
     <div style="text-align: center; padding: 40px 0 20px 0;">
         <div style="font-size: 52px; margin-bottom: 8px;">🔬</div>
-        <h1 style="font-size: 38px; font-weight: 800; color: #1E293B; margin: 0; letter-spacing: -1px;">
+        <h1 style="font-size: 38px; font-weight: 800; color: #0F172A; margin: 0; letter-spacing: -1px;">
             Intelligent Dataset Analyzer
         </h1>
-        <p style="font-size: 18px; color: #64748B; margin-top: 12px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <p style="font-size: 18px; color: #475569; margin-top: 12px; max-width: 600px; margin-left: auto; margin-right: auto; font-weight: 500;">
             Automatically analyze, clean, visualize, and understand your datasets in minutes.
         </p>
     </div>
@@ -163,8 +218,8 @@ if page == "welcome":
             st.markdown(f"""
             <div class="metric-card" style="text-align: center;">
                 <div style="font-size: 32px; margin-bottom: 10px;">{icon}</div>
-                <div style="font-size: 15px; font-weight: 700; color: #1E293B;">{title}</div>
-                <div style="font-size: 12px; color: #6B7280; margin-top: 6px;">{desc}</div>
+                <div style="font-size: 15px; font-weight: 700; color: #0F172A;">{title}</div>
+                <div style="font-size: 12px; color: #475569; margin-top: 6px; font-weight: 500;">{desc}</div>
             </div>
             """, unsafe_allow_html=True)
 
@@ -175,10 +230,10 @@ if page == "welcome":
         st.markdown("""
         <div class="metric-card">
             <div class="section-title">✨ What This System Does</div>
-            <ul style="color: #374151; font-size: 14px; line-height: 2;">
+            <ul style="color: #374151; font-size: 14px; line-height: 2; font-weight: 500;">
                 <li>Profiles your dataset structure automatically</li>
                 <li>Detects missing values, duplicates & outliers</li>
-                <li>Computes a <b>Dataset Health Score</b> (0–100)</li>
+                <li>Computes a <b style="color: #1E293B;">Dataset Health Score</b> (0–100)</li>
                 <li>Applies intelligent cleaning strategies</li>
                 <li>Generates interactive Plotly visualizations</li>
                 <li>Extracts key insights & feature importance</li>
@@ -193,10 +248,10 @@ if page == "welcome":
         st.markdown("""
         <div class="metric-card">
             <div class="section-title">🚀 Getting Started</div>
-            <ol style="color: #374151; font-size: 14px; line-height: 2.2;">
-                <li>Go to <b>Upload Dataset</b> and upload a CSV or Excel file</li>
-                <li>View the <b>Data Profiling</b> dashboard</li>
-                <li>Review the <b>Quality Report</b> and health score</li>
+            <ol style="color: #374151; font-size: 14px; line-height: 2.2; font-weight: 500;">
+                <li>Go to <b style="color: #1E293B;">Upload Dataset</b> and upload a CSV or Excel file</li>
+                <li>View the <b style="color: #1E293B;">Data Profiling</b> dashboard</li>
+                <li>Review the <b style="color: #1E293B;">Quality Report</b> and health score</li>
                 <li>Configure and run <b>Cleaning Strategies</b></li>
                 <li>Explore the <b>Visualization Dashboard</b></li>
                 <li>Read auto-generated <b>Insights</b></li>
@@ -273,10 +328,10 @@ elif page == "upload":
         <div style="border: 2px dashed #CBD5E1; border-radius: 14px; padding: 60px;
                     text-align: center; background: white; margin-top: 10px;">
             <div style="font-size: 48px; margin-bottom: 14px;">📂</div>
-            <div style="font-size: 18px; font-weight: 600; color: #374151;">
+            <div style="font-size: 18px; font-weight: 600; color: #1E293B;">
                 Drop your dataset here
             </div>
-            <div style="font-size: 13px; color: #9CA3AF; margin-top: 8px;">
+            <div style="font-size: 13px; color: #64748B; margin-top: 8px; font-weight: 500;">
                 Supported formats: CSV, Excel (.xlsx, .xls) · Up to 100k rows
             </div>
         </div>
@@ -529,7 +584,7 @@ elif page == "visualization":
 
     df = st.session_state.cleaned_df if has_cleaned_dataset() else st.session_state.df
     label = "cleaned" if has_cleaned_dataset() else "original"
-    st.markdown(f'<div class="section-title">📈 Visualization Dashboard <span style="font-size:13px;color:#94A3B8;">({label} dataset)</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="section-title">📈 Visualization Dashboard <span style="font-size:13px;color:#64748B;font-weight:500;">({label} dataset)</span></div>', unsafe_allow_html=True)
 
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "📉 Missing Values", "🔗 Correlations", "📊 Distributions",
