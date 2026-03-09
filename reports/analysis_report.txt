@@ -1,0 +1,48 @@
+============================================================
+     INTELLIGENT DATASET ANALYSIS REPORT
+     Generated: March 09, 2026 21:38
+============================================================
+
+📊 DATASET OVERVIEW
+----------------------------------------
+Total Rows    : 1,020
+Total Columns : 13
+Numeric Cols  : 8
+Categorical   : 5
+Total Missing : 318 cells (2.4%)
+Duplicates    : 19
+Memory Usage  : 347.38 KB
+
+🔍 DATA QUALITY ISSUES (Before Cleaning)
+----------------------------------------
+Dataset Health Score : 97.6 / 100
+Status               : 🟢 Excellent dataset quality
+Missing Values       : 2.4%
+Duplicate Rows       : 19 (1.86%)
+Outliers Detected    : 44 (4.31%)
+Type Errors          : 0.0% of columns
+
+🧹 CLEANING
+----------------------------------------
+  No cleaning has been applied yet.
+
+💡 KEY INSIGHTS
+----------------------------------------
+  1. Skewed Distribution: `Advertising_Spend`
+     Advertising_Spend is positively skewed (skewness=20.66). Consider log-transformation.
+  2. Skewed Distribution: `Sales`
+     Sales is positively skewed (skewness=23.03). Consider log-transformation.
+  3. Skewed Distribution: `Income`
+     Income is positively skewed (skewness=29.29). Consider log-transformation.
+  4. Dominant Category in `Discount_Applied`: No
+     No accounts for 58.5% of all values in Discount_Applied.
+  5. Dominant Category in `Gender`: Male
+     Male accounts for 49.9% of all values in Gender.
+
+📋 FINAL SUMMARY
+----------------------------------------
+The dataset contains 1,020 records across 13 columns.
+
+============================================================
+     END OF REPORT
+============================================================
