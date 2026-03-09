@@ -4,7 +4,7 @@
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-A powerful, AI-driven web application for comprehensive dataset analysis, quality assessment, and intelligent data cleaning. Built with Streamlit, DataSense automates the entire data preprocessing workflow with advanced visualization and reporting capabilities.
+**A powerful, AI-driven web application for comprehensive dataset analysis, quality assessment, and intelligent data cleaning. Built with Streamlit, DataSense automates the entire data preprocessing workflow with advanced visualization and reporting capabilities.**
 
 ## ✨ Key Features
 
@@ -43,8 +43,8 @@ A powerful, AI-driven web application for comprehensive dataset analysis, qualit
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.8 or higher
-- pip package manager
+- **Python 3.8 or higher**
+- **pip package manager**
 
 ### Installation
 
@@ -94,9 +94,9 @@ dataset_analyzer/
 ## 🎯 How to Use
 
 ### 1. **Upload Your Dataset**
-- Supported formats: CSV, Excel (XLSX, XLS), JSON
-- Maximum file size: 100MB
-- Automatic data type detection
+- **Supported formats**: CSV, Excel (XLSX, XLS), JSON
+- **Maximum file size**: 100MB
+- **Automatic data type detection**
 
 ### 2. **Data Profiling**
 - View comprehensive statistics
@@ -139,17 +139,17 @@ Ask questions about your data in natural language:
 ## 📊 Supported Data Types
 
 ### **File Formats**
-- CSV (comma, semicolon, tab delimited)
-- Excel files (.xlsx, .xls)
-- JSON files
-- Text files (delimited)
+- **CSV** (comma, semicolon, tab delimited)
+- **Excel files** (.xlsx, .xls)
+- **JSON files**
+- **Text files** (delimited)
 
 ### **Data Types**
-- Numeric (integers, floats)
-- Categorical (nominal, ordinal)
-- Text/String data
-- Date/Time values
-- Boolean values
+- **Numeric** (integers, floats)
+- **Categorical** (nominal, ordinal)
+- **Text/String** data
+- **Date/Time** values
+- **Boolean** values
 
 ## 🛠️ Configuration
 
@@ -172,24 +172,24 @@ Modify `utils/config.py` for:
 
 We welcome contributions! Please follow these steps:
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. **Fork the repository**
+2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
+3. **Commit your changes** (`git commit -m 'Add amazing feature'`)
+4. **Push to the branch** (`git push origin feature/amazing-feature`)
+5. **Open a Pull Request**
 
 ### **Development Guidelines**
-- Follow PEP 8 for Python code style
-- Add docstrings to new functions
-- Include unit tests for new features
-- Update documentation as needed
+- Follow **PEP 8** for Python code style
+- Add **docstrings** to new functions
+- Include **unit tests** for new features
+- Update **documentation** as needed
 
 ## 🐛 Troubleshooting
 
 ### **Common Issues**
 
 **Q: Large files cause memory errors**
-A: Enable chunked processing in settings or reduce file size
+A: Enable **chunked processing** in settings or reduce file size
 
 **Q: Missing dependencies**
 A: Run `pip install -r requirements.txt` with admin privileges
@@ -201,9 +201,9 @@ A: Check browser console for JavaScript errors
 A: Ensure write permissions in reports directory
 
 ### **Performance Tips**
-- Use chunked processing for large datasets
-- Clear cache regularly
-- Disable unused features in settings
+- Use **chunked processing** for large datasets
+- Clear **cache regularly**
+- Disable **unused features** in settings
 
 ## 📝 API Reference
 
@@ -229,7 +229,7 @@ cleaned_df = apply_cleaning(df, strategy='auto')
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
@@ -241,9 +241,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 📧 Email: jayeshppatel00@gmail.com
-- 🐛 Issues: [GitHub Issues](https://github.com/JAYESHX19/dataset_analyzer/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/JAYESHX19/dataset_analyzer/discussions)
+- 📧 **Email**: jayeshppatel00@gmail.com
+- 🐛 **Issues**: [GitHub Issues](https://github.com/JAYESHX19/dataset_analyzer/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/JAYESHX19/dataset_analyzer/discussions)
 
 ## 🔄 Version History
 

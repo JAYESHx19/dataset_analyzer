@@ -32,10 +32,10 @@ def get_profile(df: pd.DataFrame) -> dict:
             "Unique": int(df[col].nunique()),
         }
         if pd.api.types.is_numeric_dtype(df[col]):
-            col_info["Mean"] = round(df[col].mean(), 4) if not df[col].isna().all() else None
-            col_info["Std"] = round(df[col].std(), 4) if not df[col].isna().all() else None
-            col_info["Min"] = round(df[col].min(), 4) if not df[col].isna().all() else None
-            col_info["Max"] = round(df[col].max(), 4) if not df[col].isna().all() else None
+            col_info["Mean"] = round(float(df[col].mean()), 4) if not bool(df[col].isna().all()) else None
+            col_info["Std"] = round(float(df[col].std()), 4) if not bool(df[col].isna().all()) else None
+            col_info["Min"] = round(float(df[col].min()), 4) if not bool(df[col].isna().all()) else None
+            col_info["Max"] = round(float(df[col].max()), 4) if not bool(df[col].isna().all()) else None
         else:
             col_info["Mean"] = None
             col_info["Std"] = None

@@ -49,7 +49,14 @@ def missing_value_chart(df: pd.DataFrame) -> go.Figure:
         color=missing.values,
         color_continuous_scale=["#22C55E", "#F59E0B", "#EF4444"],
     )
-    fig.update_layout(template=PLOTLY_TEMPLATE, coloraxis_showscale=False, height=380)
+    fig.update_layout(
+        template=PLOTLY_TEMPLATE,
+        xaxis=dict(title=dict(text="Column", font=dict(color="#000000"))),
+        yaxis=dict(title=dict(text="Missing Count", font=dict(color="#000000"))),
+        title=dict(text="Missing Values per Column", font=dict(color="#000000")),
+        height=400,
+        coloraxis_showscale=False,
+    )
     return fig
 
 
@@ -102,7 +109,7 @@ def correlation_heatmap(df: pd.DataFrame) -> go.Figure:
         showscale=True,
     ))
     fig.update_layout(
-        title="Correlation Heatmap",
+        title=dict(text="Correlation Heatmap", font=dict(color="#000000")),
         template=PLOTLY_TEMPLATE,
         height=480,
     )
@@ -132,7 +139,11 @@ def histogram_grid(df: pd.DataFrame, max_cols: int = 6) -> go.Figure:
             row=row, col=col_idx
         )
 
-    fig.update_layout(template=PLOTLY_TEMPLATE, title="Numeric Column Distributions", height=250 * rows)
+    fig.update_layout(
+        template=PLOTLY_TEMPLATE, 
+        title=dict(text="Numeric Column Distributions", font=dict(color="#000000")),
+        height=250 * rows,
+    )
     return fig
 
 
@@ -212,9 +223,11 @@ def boxplot_outliers(df: pd.DataFrame, max_cols: int = 8) -> go.Figure:
 
     fig.update_layout(
         template=PLOTLY_TEMPLATE,
-        title=dict(text="Outlier Boxplots (red dots = outliers)", font=dict(size=15)),
+        title=dict(text="Outlier Boxplots (red dots = outliers)", font=dict(size=15, color="#000000")),
         height=280 * rows,
         paper_bgcolor="#FAFAFA",
+        xaxis=dict(title=dict(text="Columns", font=dict(color="#000000"))),
+        yaxis=dict(title=dict(text="Values", font=dict(color="#000000"))),
     )
     return fig
 

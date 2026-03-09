@@ -63,11 +63,11 @@ st.markdown("""
     }
     section[data-testid="stSidebar"] .stRadio label:hover { background: #334155 !important; }
     h1, h2, h3, h4, h5, h6 { font-family: 'Inter', sans-serif; font-weight: 700; }
-    h1 { color: #0F172A; }
-    h2 { color: #1E293B; }
-    h3 { color: #334155; }
-    h4 { color: #475569; }
-    h5, h6 { color: #64748B; }
+    h1 { color: #000000 !important; }
+    h2 { color: #000000 !important; }
+    h3 { color: #000000 !important; }
+    h4 { color: #000000 !important; }
+    h5, h6 { color: #000000 !important; }
     .stDataFrame { border-radius: 10px; overflow: hidden; }
     div[data-testid="metric-container"] {
         background: white; border-radius: 12px; padding: 16px;
@@ -89,50 +89,94 @@ st.markdown("""
         border: 1px solid #E2E8F0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
     .section-title {
-        font-size: 16px; font-weight: 700; color: #1E293B; margin-bottom: 12px;
+        font-size: 16px; font-weight: 700; color: #000000 !important; margin-bottom: 12px;
     }
-    .stMarkdown { color: #374151; }
-    .stSelectbox > div > div > div { color: #374151; }
-    .stSlider > div > div > div { color: #374151; }
-    .stTextInput > div > div > input { color: #374151; }
-    .stTextArea > div > div > textarea { color: #374151; }
-    .stCheckbox > label { color: #374151; font-weight: 500; }
-    .stRadio > label { color: #374151; font-weight: 500; }
-    .stSelectbox > label { color: #374151; font-weight: 600; }
-    .stSlider > label { color: #374151; font-weight: 600; }
-    .stTextInput > label { color: #374151; font-weight: 600; }
-    .stTextArea > label { color: #374151; font-weight: 600; }
-    .stExpander > div > div > span { color: #374151; font-weight: 600; }
-    .stCaption { color: #64748B; font-weight: 500; }
+    /* Force all text to black with maximum specificity */
+    .stMarkdown, .stMarkdown * { color: #000000 !important; font-weight: 600 !important; }
+    .stSelectbox, .stSelectbox * { color: #000000 !important; font-weight: 600 !important; }
+    .stSlider, .stSlider * { color: #000000 !important; font-weight: 600 !important; }
+    .stTextInput, .stTextInput * { color: #000000 !important; font-weight: 600 !important; }
+    .stTextArea, .stTextArea * { color: #000000 !important; font-weight: 600 !important; }
+    .stCheckbox, .stCheckbox * { color: #000000 !important; font-weight: 600 !important; }
+    .stRadio, .stRadio * { color: #000000 !important; font-weight: 600 !important; }
+    .stSelectbox > label, .stSlider > label, .stTextInput > label, .stTextArea > label { 
+        color: #000000 !important; font-weight: 700 !important; 
+    }
+    .stExpander, .stExpander * { color: #000000 !important; font-weight: 600 !important; }
+    .stCaption { color: #000000 !important; font-weight: 600 !important; }
     .stInfo { background: #EFF6FF; border: 1px solid #BFDBFE; }
     .stWarning { background: #FFFBEB; border: 1px solid #FDE68A; }
     .stError { background: #FEF2F2; border: 1px solid #FECACA; }
     .stSuccess { background: #F0FDF4; border: 1px solid #BBF7D0; }
     div[data-testid="stExpander"] {
-        background: white; border: 1px solid #E2E8F0; border-radius: 8px;
+        background: #FFFFFF !important; border: 1px solid #E2E8F0 !important; border-radius: 8px !important;
     }
-    div[data-testid="stExpander"] > div > div > div {
-        color: #374151; font-weight: 500;
+    div[data-testid="stExpander"] * {
+        color: #000000 !important; font-weight: 600 !important;
+    }
+    /* White expander header */
+    div[data-testid="stExpander"] > div > div:first-child {
+        background: #FFFFFF !important; border-bottom: 1px solid #E2E8F0 !important;
+    }
+    /* Expander arrow and title */
+    div[data-testid="stExpander"] > div > div:first-child > div {
+        color: #000000 !important; font-weight: 700 !important;
+    }
+    /* Force all expander variations to white */
+    .streamlit-expanderHeader, .streamlit-expanderHeader * {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+    }
+    div[style*="background: rgb"], div[style*="background-color"] {
+        background: #FFFFFF !important;
+    }
+    /* Override any hover states */
+    div[data-testid="stExpander"]:hover,
+    div[data-testid="stExpander"]:hover *,
+    div[data-testid="stExpander"]:hover > div,
+    div[data-testid="stExpander"]:hover > div > div,
+    div[data-testid="stExpander"]:hover > div > div > div {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        box-shadow: none !important;
     }
     .insight-card {
         background: white; border: 1px solid #E2E8F0; border-radius: 8px;
         padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
     .insight-card h4 {
-        color: #1E293B; margin: 0 0 8px 0; font-size: 14px; font-weight: 600;
+        color: #000000 !important; margin: 0 0 8px 0; font-size: 14px; font-weight: 700;
     }
     .insight-card p {
-        color: #475569; margin: 0; font-size: 13px; line-height: 1.5; font-weight: 500;
+        color: #000000 !important; margin: 0; font-size: 13px; line-height: 1.5; font-weight: 600;
     }
     .chat-bubble-user {
         background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 12px;
         padding: 12px 16px; margin: 8px 0; max-width: 80%; margin-left: auto;
-        color: #1E40AF; font-weight: 500;
+        color: #000000 !important; font-weight: 600;
     }
     .chat-bubble-bot {
         background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px;
-        padding: 12px 16px; margin: 8px 0; max-width: 80%; color: #374151; font-weight: 500;
+        padding: 12px 16px; margin: 8px 0; max-width: 80%; color: #000000 !important; font-weight: 600;
     }
+    /* Force black text for all metrics and data displays with maximum specificity */
+    div[data-testid="metric-container"] * { color: #000000 !important; font-weight: 600 !important; }
+    div[data-testid="element-container"] * { color: #000000 !important; font-weight: 600 !important; }
+    .stMetric * { color: #000000 !important; font-weight: 600 !important; }
+    /* Tabs styling */
+    .stTabs * { color: #000000 !important; font-weight: 600 !important; }
+    .stTabs [data-baseweb="tab-list"] * { color: #000000 !important; font-weight: 600 !important; }
+    .stTabs [data-baseweb="tab"] * { color: #000000 !important; font-weight: 600 !important; }
+    .stTabs [data-baseweb="tab"][aria-selected="true"] * { color: #000000 !important; font-weight: 700 !important; }
+    /* Override all possible text elements */
+    p, span, div, label, h1, h2, h3, h4, h5, h6, li, td, th { color: #000000 !important; }
+    /* Streamlit specific overrides */
+    .css-1d391kg { color: #000000 !important; }
+    .css-1v0mbdj { color: #000000 !important; }
+    .css-1lcbmhc { color: #000000 !important; }
+    .css-1r6slb0 { color: #000000 !important; }
+    .css-1vq4p4l { color: #000000 !important; }
+    .css-1kyxreq { color: #000000 !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -326,13 +370,13 @@ elif page == "upload":
     else:
         st.markdown("""
         <div style="border: 2px dashed #CBD5E1; border-radius: 14px; padding: 60px;
-                    text-align: center; background: white; margin-top: 10px;">
+                    text-align: center; background: #FFFFFF; margin-top: 10px;">
             <div style="font-size: 48px; margin-bottom: 14px;">📂</div>
-            <div style="font-size: 18px; font-weight: 600; color: #1E293B;">
-                Drop your dataset here
+            <div style="font-size: 18px; font-weight: 600; color: #000000;">
+                Drag and drop your dataset here
             </div>
-            <div style="font-size: 13px; color: #64748B; margin-top: 8px; font-weight: 500;">
-                Supported formats: CSV, Excel (.xlsx, .xls) · Up to 100k rows
+            <div style="font-size: 13px; color: #000000; margin-top: 8px; font-weight: 500;">
+                Limit 200MB per file • CSV, XLSX, XLS
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -482,50 +526,60 @@ elif page == "cleaning":
     missing_cols = [c for c in df.columns if df[c].isnull().any()]
     missing_strategy = {}
 
-    with st.expander("1️⃣ Missing Value Handling", expanded=True):
-        if not missing_cols:
-            st.success("✅ No missing values — nothing to configure here.")
-        else:
-            st.markdown(f"Configure imputation for **{len(missing_cols)}** columns with missing data.")
-            for col in missing_cols:
-                suggested = get_suggested_strategy(df, col)
-                dtype_label = "Numeric" if pd.api.types.is_numeric_dtype(df[col]) else "Categorical"
-                options = (["mean", "median", "mode", "drop"]
-                           if pd.api.types.is_numeric_dtype(df[col])
-                           else ["mode", "drop"])
-                chosen = st.selectbox(
-                    f"`{col}` ({dtype_label}, {int(df[col].isnull().sum())} missing)",
-                    options,
-                    index=options.index(suggested) if suggested in options else 0,
-                    key=f"missing_{col}",
-                )
-                missing_strategy[col] = chosen
+    st.markdown("### 1️⃣ Missing Value Handling")
+    if not missing_cols:
+        st.success("✅ No missing values — nothing to configure here.")
+    else:
+        st.markdown(f"Configure imputation for **{len(missing_cols)}** columns with missing data.")
+        for col in missing_cols:
+            suggested = get_suggested_strategy(df, col)
+            dtype_label = "Numeric" if pd.api.types.is_numeric_dtype(df[col]) else "Categorical"
+            options = (["mean", "median", "mode", "drop"]
+                       if pd.api.types.is_numeric_dtype(df[col])
+                       else ["mode", "drop"])
+            chosen = st.selectbox(
+                f"`{col}` ({dtype_label}, {int(df[col].isnull().sum())} missing)",
+                options,
+                index=options.index(suggested) if suggested in options else 0,
+                key=f"missing_{col}",
+            )
+            missing_strategy[col] = chosen
 
-    with st.expander("2️⃣ Duplicate Rows", expanded=True):
-        remove_dups = st.checkbox("Remove duplicate rows", value=True, key="remove_dups_cb")
-        dup_count = st.session_state.quality_before["duplicate_count"] if st.session_state.quality_before else detect_duplicates(df)
-        st.caption(f"Currently: **{dup_count:,}** duplicate rows detected.")
+    st.markdown("---")
+    
+    # Duplicate handling
+    st.markdown("### 2️⃣ Duplicate Rows")
+    remove_dups = st.checkbox("Remove duplicate rows", value=True, key="remove_dups_cb")
+    dup_count = st.session_state.quality_before["duplicate_count"] if st.session_state.quality_before else detect_duplicates(df)
+    st.caption(f"Currently: **{dup_count:,}** duplicate rows detected.")
 
-    with st.expander("3️⃣ Outlier Handling", expanded=True):
-        outlier_opt = st.radio(
-            "Select outlier strategy:",
-            ["keep", "cap", "remove"],
-            format_func=lambda x: {
-                "keep": "Keep outliers (no change)",
-                "cap": "Cap using IQR bounds",
-                "remove": "Remove outlier rows",
-            }[x],
-            horizontal=True,
-            key="outlier_radio",
-        )
+    st.markdown("---")
+    
+    # Outlier handling
+    st.markdown("### 3️⃣ Outlier Handling")
+    outlier_opt = st.radio(
+        "Select outlier strategy:",
+        ["keep", "cap", "remove"],
+        format_func=lambda x: {
+            "keep": "Keep outliers (no change)",
+            "cap": "Cap using IQR bounds",
+            "remove": "Remove outlier rows",
+        }[x],
+        horizontal=True,
+        key="outlier_radio",
+    )
 
-    with st.expander("4️⃣ Data Type Correction", expanded=True):
-        fix_dtypes = st.checkbox("Auto-convert numeric-looking text columns", value=True, key="fix_dtypes_cb")
-        if st.session_state.quality_before:
-            errs = st.session_state.quality_before.get("type_errors", [])
-            if errs:
-                st.caption(f"Columns to fix: `{'`, `'.join(errs)}`")
+    st.markdown("---")
+    
+    # Data type correction
+    st.markdown("### 4️⃣ Data Type Correction")
+    fix_dtypes = st.checkbox("Auto-convert numeric-looking text columns", value=True, key="fix_dtypes_cb")
+    if st.session_state.quality_before:
+        errs = st.session_state.quality_before.get("type_errors", [])
+        if errs:
+            st.caption(f"Columns to fix: `{'`, `'.join(errs)}`")
 
+    st.markdown("---")
     st.markdown("---")
     if st.button("🚀 Run Data Cleaning", type="primary", use_container_width=False):
         with st.spinner("Cleaning dataset..."):
