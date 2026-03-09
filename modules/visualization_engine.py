@@ -45,7 +45,6 @@ def missing_value_chart(df: pd.DataFrame) -> go.Figure:
         x=missing.index,
         y=missing.values,
         labels={"x": "Column", "y": "Missing Count"},
-        title="Missing Values per Column",
         color=missing.values,
         color_continuous_scale=["#22C55E", "#F59E0B", "#EF4444"],
     )

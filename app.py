@@ -509,7 +509,7 @@ elif page == "quality":
         else:
             st.warning(f"🔧 **{len(type_errors)}** columns appear to have incorrect data types:")
             for col in type_errors:
-                st.markdown(f"- `{col}` — stored as **text** but contains numeric values")
+                st.markdown(f"- **{col}** — stored as **text** but contains numeric values")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -537,13 +537,24 @@ elif page == "cleaning":
             options = (["mean", "median", "mode", "drop"]
                        if pd.api.types.is_numeric_dtype(df[col])
                        else ["mode", "drop"])
-            chosen = st.selectbox(
-                f"`{col}` ({dtype_label}, {int(df[col].isnull().sum())} missing)",
+            
+            st.markdown(f"**{col}** ({dtype_label}, {int(df[col].isnull().sum())} missing)")
+            chosen = st.radio(
+                "Select strategy:",
                 options,
                 index=options.index(suggested) if suggested in options else 0,
+                format_func=lambda x: {
+                    "mean": "Mean (average)",
+                    "median": "Median (middle value)",
+                    "mode": "Mode (most frequent)",
+                    "drop": "Drop rows with missing values"
+                }.get(x, x),
+                horizontal=True,
                 key=f"missing_{col}",
+                label_visibility="collapsed"
             )
             missing_strategy[col] = chosen
+            st.markdown("---")
 
     st.markdown("---")
     
@@ -577,7 +588,7 @@ elif page == "cleaning":
     if st.session_state.quality_before:
         errs = st.session_state.quality_before.get("type_errors", [])
         if errs:
-            st.caption(f"Columns to fix: `{'`, `'.join(errs)}`")
+            st.caption(f"Columns to fix: **{', '.join(errs)}**")
 
     st.markdown("---")
     st.markdown("---")
@@ -772,7 +783,7 @@ elif page == "drift":
 
         for col_res in results["column_results"]:
             drift_badge = "🔴 Drifted" if col_res["drift"] else "🟢 Stable"
-            with st.expander(f"{drift_badge} — `{col_res['column']}`"):
+            with st.expander(f"{drift_badge} — {col_res['column']}"):
                 st.markdown(col_res["summary"])
                 if col_res["type"] == "numeric":
                     st.markdown(f"- Old mean: **{col_res['old_mean']}** → New mean: **{col_res['new_mean']}**")
@@ -865,7 +876,7 @@ elif page == "assistant":
         - What is the strongest correlation?
         - How many rows does the dataset have?
         - What is the dataset health score?
-        - Tell me about the `Age` column
+        - Tell me about the Age column
         - What outliers were detected?
         """)
 
