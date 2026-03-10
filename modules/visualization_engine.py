@@ -50,11 +50,14 @@ def missing_value_chart(df: pd.DataFrame) -> go.Figure:
     )
     fig.update_layout(
         template=PLOTLY_TEMPLATE,
-        xaxis=dict(title=dict(text="Column", font=dict(color="#000000"))),
-        yaxis=dict(title=dict(text="Missing Count", font=dict(color="#000000"))),
-        title=dict(text="Missing Values per Column", font=dict(color="#000000")),
-        height=400,
+        xaxis=dict(title=dict(text="Column", font=dict(color="#000000", size=14))),
+        yaxis=dict(title=dict(text="Missing Count", font=dict(color="#000000", size=14))),
+        title=dict(text="Missing Values per Column", font=dict(color="#000000", size=18)),
+        height=450,
         coloraxis_showscale=False,
+        font=dict(color="#000000"),
+        plot_bgcolor="#FFFFFF",
+        paper_bgcolor="#FFFFFF",
     )
     return fig
 
@@ -108,9 +111,14 @@ def correlation_heatmap(df: pd.DataFrame) -> go.Figure:
         showscale=True,
     ))
     fig.update_layout(
-        title=dict(text="Correlation Heatmap", font=dict(color="#000000")),
+        title=dict(text="Correlation Heatmap", font=dict(color="#000000", size=18)),
         template=PLOTLY_TEMPLATE,
-        height=480,
+        height=520,
+        xaxis=dict(title=dict(text="Features", font=dict(color="#000000", size=14))),
+        yaxis=dict(title=dict(text="Features", font=dict(color="#000000", size=14))),
+        font=dict(color="#000000"),
+        plot_bgcolor="#FFFFFF",
+        paper_bgcolor="#FFFFFF",
     )
     return fig
 
@@ -140,8 +148,13 @@ def histogram_grid(df: pd.DataFrame, max_cols: int = 6) -> go.Figure:
 
     fig.update_layout(
         template=PLOTLY_TEMPLATE, 
-        title=dict(text="Numeric Column Distributions", font=dict(color="#000000")),
-        height=250 * rows,
+        title=dict(text="Numeric Column Distributions", font=dict(color="#000000", size=18)),
+        height=300 * rows,
+        xaxis=dict(title=dict(text="Value", font=dict(color="#000000", size=14))),
+        yaxis=dict(title=dict(text="Frequency", font=dict(color="#000000", size=14))),
+        font=dict(color="#000000"),
+        plot_bgcolor="#FFFFFF",
+        paper_bgcolor="#FFFFFF",
     )
     return fig
 
@@ -222,11 +235,13 @@ def boxplot_outliers(df: pd.DataFrame, max_cols: int = 8) -> go.Figure:
 
     fig.update_layout(
         template=PLOTLY_TEMPLATE,
-        title=dict(text="Outlier Boxplots (red dots = outliers)", font=dict(size=15, color="#000000")),
-        height=280 * rows,
-        paper_bgcolor="#FAFAFA",
-        xaxis=dict(title=dict(text="Columns", font=dict(color="#000000"))),
-        yaxis=dict(title=dict(text="Values", font=dict(color="#000000"))),
+        title=dict(text="Outlier Boxplots (red dots = outliers)", font=dict(size=18, color="#000000")),
+        height=350 * rows,
+        paper_bgcolor="#FFFFFF",
+        plot_bgcolor="#FFFFFF",
+        font=dict(color="#000000"),
+        xaxis=dict(title=dict(text="Columns", font=dict(color="#000000", size=14))),
+        yaxis=dict(title=dict(text="Values", font=dict(color="#000000", size=14))),
     )
     return fig
 

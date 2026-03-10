@@ -216,15 +216,15 @@ def render_health_bar(score: float, label: str = "Dataset Health Score"):
     color = health_score_color(score)
     st.markdown(f"""
     <div style="margin-bottom: 8px;">
-        <span style="font-size: 14px; color: #6B7280; font-weight: 500;">{label}</span>
+        <span style="font-size: 14px; color: #000000; font-weight: 600;">{label}</span>
     </div>
     <div style="display: flex; align-items: center; gap: 14px;">
-        <div style="flex: 1; background: #E5E7EB; border-radius: 999px; height: 14px;">
-            <div style="width: {score}%; background: {color}; height: 14px; border-radius: 999px;
-                        transition: width 0.5s ease;"></div>
+        <div style="flex: 1; background: #E5E7EB; border-radius: 999px; height: 16px; border: 1px solid #D1D5DB;">
+            <div style="width: {score}%; background: {color}; height: 16px; border-radius: 999px;
+                        transition: width 0.5s ease; border: 1px solid {color};"></div>
         </div>
         <span style="font-size: 22px; font-weight: 700; color: {color};">{score:.1f}<span
-              style="font-size: 14px; color: #9CA3AF;">/100</span></span>
+              style="font-size: 14px; color: #000000; font-weight: 500;">/100</span></span>
     </div>
     """, unsafe_allow_html=True)
 

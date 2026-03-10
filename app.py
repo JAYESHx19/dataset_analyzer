@@ -177,6 +177,70 @@ st.markdown("""
     .css-1r6slb0 { color: #000000 !important; }
     .css-1vq4p4l { color: #000000 !important; }
     .css-1kyxreq { color: #000000 !important; }
+    /* File uploader styling - maximum specificity and override */
+    div[data-testid="stFileUploader"],
+    div[data-testid="stFileUploader"] > div,
+    div[data-testid="stFileUploader"] > div > div,
+    div[data-testid="stFileUploader"] > div > div > div,
+    div[data-testid="stFileUploader"] > div > div > div > div {
+        background: #FFFFFF !important;
+        border: 2px dashed #CBD5E1 !important;
+        border-radius: 14px !important;
+        padding: 20px !important;
+    }
+    div[data-testid="stFileUploader"] *,
+    div[data-testid="stFileUploader"] span,
+    div[data-testid="stFileUploader"] label,
+    div[data-testid="stFileUploader"] p,
+    div[data-testid="stFileUploader"] div,
+    div[data-testid="stFileUploader"] section {
+        color: #000000 !important;
+        font-weight: 500 !important;
+    }
+    /* Override any inline styles */
+    div[data-testid="stFileUploader"] [style*="background"],
+    div[data-testid="stFileUploader"] [style*="color"] {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+    }
+    /* Target Streamlit specific uploader classes */
+    .css-1cpxqw2,
+    .css-1cpxqw2 *,
+    .css-1cpxqw2 > div,
+    .css-1cpxqw2 > div > div {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+    }
+    /* Force override for all uploader elements */
+    [data-testid="stFileUploader"] {
+        background-color: #FFFFFF !important;
+    }
+    [data-testid="stFileUploader"] * {
+        color: #000000 !important;
+        background-color: #FFFFFF !important;
+    }
+    /* Text area styling for reports */
+    div[data-testid="stTextArea"] > div > div > textarea,
+    div[data-testid="stTextArea"] textarea {
+        background-color: #FFFFFF !important;
+        color: #000000 !important;
+        border: 1px solid #D1D5DB !important;
+    }
+    div[data-testid="stTextArea"] {
+        background-color: #FFFFFF !important;
+    }
+    div[data-testid="stTextArea"] * {
+        background-color: #FFFFFF !important;
+        color: #000000 !important;
+    }
+    /* Override any dark text area styles */
+    .stTextArea,
+    .stTextArea *,
+    textarea,
+    textarea * {
+        background-color: #FFFFFF !important;
+        color: #000000 !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -224,10 +288,10 @@ with st.sidebar:
             score = st.session_state.quality_before["health_score"]
             st.markdown(f"""
             <div style="margin-top: 10px;">
-                <div style="font-size: 11px; color: #94A3B8; margin-bottom: 4px;">Dataset Health</div>
-                <div style="background: #334155; border-radius: 8px; height: 8px;">
+                <div style="font-size: 11px; color: #000000; margin-bottom: 4px; font-weight: 600;">Dataset Health</div>
+                <div style="background: #E5E7EB; border-radius: 8px; height: 10px; border: 1px solid #D1D5DB;">
                     <div style="width: {score}%; background: {'#22C55E' if score >= 75 else '#F59E0B' if score >= 50 else '#EF4444'};
-                                height: 8px; border-radius: 8px;"></div>
+                                height: 10px; border-radius: 8px; border: 1px solid {'#22C55E' if score >= 75 else '#F59E0B' if score >= 50 else '#EF4444'};"></div>
                 </div>
                 <div style="font-size: 13px; color: {'#22C55E' if score >= 75 else '#F59E0B' if score >= 50 else '#EF4444'};
                             font-weight: 700; margin-top: 4px;">{score}/100</div>
