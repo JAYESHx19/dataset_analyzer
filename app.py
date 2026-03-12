@@ -241,6 +241,36 @@ st.markdown("""
         background-color: #FFFFFF !important;
         color: #000000 !important;
     }
+    /* Cleaning results section styling */
+    .stSuccess,
+    .stSuccess * {
+        background-color: #22C55E !important;
+        color: #FFFFFF !important;
+    }
+    .stSuccess p,
+    .stSuccess span,
+    .stSuccess div,
+    .stSuccess li,
+    .stSuccess ul,
+    .stSuccess strong,
+    .stSuccess b {
+        color: #FFFFFF !important;
+        background-color: transparent !important;
+    }
+    /* Success message override */
+    [data-testid="stSuccess"] {
+        background-color: #22C55E !important;
+    }
+    [data-testid="stSuccess"] * {
+        color: #FFFFFF !important;
+    }
+    [data-testid="stSuccess"] div[data-testid="stMarkdownContainer"] * {
+        color: #FFFFFF !important;
+    }
+    [data-testid="stSuccess"] ul,
+    [data-testid="stSuccess"] li {
+        color: #FFFFFF !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -669,12 +699,8 @@ elif page == "cleaning":
             st.session_state.cleaning_log = log
             st.session_state.quality_after = compute_health_score(cleaned_df)
 
-        st.success(f"✅ Cleaning complete! {len(cleaned_df):,} rows remaining.")
-
-        if log:
-            st.markdown("**Applied cleaning steps:**")
-            for step in log:
-                st.markdown(f"- {step}")
+        st.success(f"✅ Cleaning complete! {len(cleaned_df):,} rows remaining." + 
+                   ("\n\n**Applied cleaning steps:**\n" + "\n".join([f"- {step}" for step in log]) if log else ""))
 
         # Before vs After health
         q_before = st.session_state.quality_before
@@ -713,7 +739,7 @@ elif page == "visualization":
 
     df = st.session_state.cleaned_df if has_cleaned_dataset() else st.session_state.df
     label = "cleaned" if has_cleaned_dataset() else "original"
-    st.markdown(f'<div class="section-title">📈 Visualization Dashboard <span style="font-size:13px;color:#64748B;font-weight:500;">({label} dataset)</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="section-title">📈 Visualization Dashboard <span style="font-size:13px;color:#000000;font-weight:500;">({label} dataset)</span></div>', unsafe_allow_html=True)
 
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "📉 Missing Values", "🔗 Correlations", "📊 Distributions",
